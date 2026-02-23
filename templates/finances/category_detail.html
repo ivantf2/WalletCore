@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Category Detail</h2>
+
+<p><strong>Name:</strong> {{ object.name }}</p>
+<p><strong>Type:</strong> {{ object.type }}</p>
+
+<hr>
+
+<a href="{% url 'finances:category_edit' object.pk %}">Edit</a> |
+<a href="{% url 'finances:category_delete' object.pk %}">Delete</a> |
+<a href="{% url 'finances:category_list' %}">Back</a>
+
+{% endblock %}

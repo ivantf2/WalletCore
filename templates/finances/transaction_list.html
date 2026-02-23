@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Transactions</h2>
+
+<form method="get">
+  <input name="q" placeholder="Search..." value="{{ request.GET.q }}">
+  <button type="submit">Search</button>
+</form>
+
+<ul>
+  {% for t in object_list %}
+    <li>
+      <a href="{% url 'finances:transaction_detail' t.pk %}">
+        {{ t.date }} — {{ t.category.name }} — {{ t.amount }}
+      </a>
+    </li>
+  {% empty %}
+    <li>No transactions.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

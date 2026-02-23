@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Goals</h2>
+<ul>
+  {% for g in object_list %}
+    <li><a href="{% url 'finances:goal_detail' g.pk %}">{{ g.title }} — {{ g.current_amount }}/{{ g.target_amount }}</a></li>
+  {% empty %}
+    <li>No goals.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

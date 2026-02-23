@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Transaction Detail</h2>
+
+<p><strong>Date:</strong> {{ object.date }}</p>
+<p><strong>Category:</strong> {{ object.category.name }}</p>
+<p><strong>Amount:</strong> {{ object.amount }}</p>
+<p><strong>Note:</strong> {{ object.note|default:"-" }}</p>
+
+<hr>
+
+<a href="{% url 'finances:transaction_edit' object.pk %}">Edit</a> |
+<a href="{% url 'finances:transaction_delete' object.pk %}">Delete</a> |
+<a href="{% url 'finances:transaction_list' %}">Back</a>
+
+{% endblock %}
