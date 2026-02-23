@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Goals</h2>
-<ul>
-  {% for g in object_list %}
-    <li><a href="{% url 'finances:goal_detail' g.pk %}">{{ g.title }} — {{ g.current_amount }}/{{ g.target_amount }}</a></li>
-  {% empty %}
-    <li>No goals.</li>
-  {% endfor %}
-</ul>
+
+<div class="flex items-center justify-between mb-6">
+  <h2 class="text-2xl font-semibold">Goals</h2>
+  <a class="wc-btn wc-btn-primary" href="{% url 'finances:goal_create' %}">New Goal</a>
+</div>
+
+<div class="wc-card">
+  <ul class="space-y-3">
+    {% for g in object_list %}
+      <li>
+        <a href="{% url 'finances:goal_detail' g.pk %}">
+          <div class="flex justify-between">
+            <span>{{ g.title }}</span>
+            <span>{{ g.current_amount }} / {{ g.target_amount }}</span>
+          </div>
+        </a>
+      </li>
+    {% empty %}
+      <li>No goals.</li>
+    {% endfor %}
+  </ul>
+</div>
+
 {% endblock %}

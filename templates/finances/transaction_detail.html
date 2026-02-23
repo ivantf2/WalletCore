@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Transaction Detail</h2>
+<div class="flex items-center justify-between mb-6">
+  <h2 class="text-2xl font-semibold">Transaction</h2>
+  <div class="flex gap-2">
+    <a class="wc-btn" href="{% url 'finances:transaction_edit' object.pk %}">Edit</a>
+    <a class="wc-btn" style="background: var(--danger-soft);" href="{% url 'finances:transaction_delete' object.pk %}">Delete</a>
+  </div>
+</div>
 
-<p><strong>Date:</strong> {{ object.date }}</p>
-<p><strong>Category:</strong> {{ object.category.name }}</p>
-<p><strong>Amount:</strong> {{ object.amount }}</p>
-<p><strong>Note:</strong> {{ object.note|default:"-" }}</p>
+<div class="wc-card space-y-2">
+  <p><strong>Date:</strong> {{ object.date }}</p>
+  <p><strong>Category:</strong> {{ object.category.name }}</p>
+  <p><strong>Amount:</strong> {{ object.amount }}</p>
+  <p><strong>Note:</strong> {{ object.note|default:"-" }}</p>
+</div>
 
-<hr>
-
-<a href="{% url 'finances:transaction_edit' object.pk %}">Edit</a> |
-<a href="{% url 'finances:transaction_delete' object.pk %}">Delete</a> |
-<a href="{% url 'finances:transaction_list' %}">Back</a>
+<div class="mt-5">
+  <a class="wc-btn" href="{% url 'finances:transaction_list' %}">Back</a>
+</div>
 
 {% endblock %}

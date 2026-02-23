@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-semibold mb-6">
+  {% if object %}Edit Goal{% else %}New Goal{% endif %}
+</h2>
+
+<div class="wc-card">
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="flex gap-2 pt-2">
+      <button class="wc-btn wc-btn-primary" type="submit">Save</button>
+      <a class="wc-btn" href="{% url 'finances:goal_list' %}">Back</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

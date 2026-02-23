@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Category Detail</h2>
+<div class="flex items-center justify-between mb-6">
+  <h2 class="text-2xl font-semibold">Category</h2>
+  <div class="flex gap-2">
+    <a class="wc-btn" href="{% url 'finances:category_edit' object.pk %}">Edit</a>
+    <a class="wc-btn" style="background: var(--danger-soft);" href="{% url 'finances:category_delete' object.pk %}">Delete</a>
+  </div>
+</div>
 
-<p><strong>Name:</strong> {{ object.name }}</p>
-<p><strong>Type:</strong> {{ object.type }}</p>
+<div class="wc-card space-y-2">
+  <p><strong>Name:</strong> {{ object.name }}</p>
+  <p><strong>Type:</strong> {{ object.type }}</p>
+</div>
 
-<hr>
-
-<a href="{% url 'finances:category_edit' object.pk %}">Edit</a> |
-<a href="{% url 'finances:category_delete' object.pk %}">Delete</a> |
-<a href="{% url 'finances:category_list' %}">Back</a>
+<div class="mt-5">
+  <a class="wc-btn" href="{% url 'finances:category_list' %}">Back</a>
+</div>
 
 {% endblock %}

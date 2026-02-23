@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="mb-6">
+  <h1 class="text-3xl font-semibold">Dashboard</h1>
+  <p class="text-[color:var(--muted)] mt-1">Quick access to your finances.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="wc-card p-5">
+    <div class="text-[color:var(--muted)] text-sm">Transactions</div>
+    <div class="text-2xl font-semibold mt-1">Track spending</div>
+    <a class="wc-btn wc-btn-primary mt-4 inline-block" href="{% url 'finances:transaction_list' %}">Open</a>
+  </div>
+
+  <div class="wc-card p-5">
+    <div class="text-[color:var(--muted)] text-sm">Categories</div>
+    <div class="text-2xl font-semibold mt-1">Organize</div>
+    <a class="wc-btn wc-btn-primary mt-4 inline-block" href="{% url 'finances:category_list' %}">Open</a>
+  </div>
+
+  <div class="wc-card p-5">
+    <div class="text-[color:var(--muted)] text-sm">Goals</div>
+    <div class="text-2xl font-semibold mt-1">Plan ahead</div>
+    <a class="wc-btn wc-btn-primary mt-4 inline-block" href="{% url 'finances:goal_list' %}">Open</a>
+  </div>
+</div>
+
+{% endblock %}

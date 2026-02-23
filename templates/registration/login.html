@@ -1,15 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Login</h2>
 
-{% if form.errors %}
-  <p>Neispravan username ili password.</p>
-{% endif %}
+<div class="max-w-md mx-auto">
+  <h2 class="text-2xl font-semibold mb-6">Login</h2>
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+  <div class="wc-card">
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="border border-[color:var(--line)] rounded-xl p-3 text-sm" style="background: rgba(251,113,133,0.08);">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      <div>
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <div class="text-sm mt-1" style="color: #fb7185;">{{ form.username.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div>
+        <label for="{{ form.password.id_for_label }}">Password</label>
+        {{ form.password }}
+        {% if form.password.errors %}
+          <div class="text-sm mt-1" style="color: #fb7185;">{{ form.password.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button class="wc-btn wc-btn-primary" type="submit">Login</button>
+        <a class="wc-btn" href="{% url 'finances:register' %}">Create account</a>
+      </div>
+
+    </form>
+  </div>
+</div>
 
 {% endblock %}

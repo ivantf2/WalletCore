@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Financial Goal</h2>
+<div class="flex items-center justify-between mb-6">
+  <h2 class="text-2xl font-semibold">Financial Goal</h2>
+  <div class="flex gap-2">
+    <a class="wc-btn" href="{% url 'finances:goal_edit' object.pk %}">Edit</a>
+    <a class="wc-btn" style="background: var(--danger-soft);" href="{% url 'finances:goal_delete' object.pk %}">Delete</a>
+  </div>
+</div>
 
-<p><strong>Title:</strong> {{ object.title }}</p>
-<p><strong>Target amount:</strong> {{ object.target_amount }}</p>
-<p><strong>Current amount:</strong> {{ object.current_amount }}</p>
+<div class="wc-card space-y-2">
+  <p><strong>Title:</strong> {{ object.title }}</p>
+  <p><strong>Target:</strong> {{ object.target_amount }}</p>
+  <p><strong>Current:</strong> {{ object.current_amount }}</p>
+  <p><strong>Deadline:</strong> {{ object.deadline|default:"No deadline" }}</p>
+</div>
 
-<p>
-<strong>Progress:</strong>
-{{ object.current_amount }} / {{ object.target_amount }}
-</p>
-
-<p><strong>Deadline:</strong> {{ object.deadline|default:"No deadline" }}</p>
-
-<hr>
-
-<a href="{% url 'finances:goal_edit' object.pk %}">Edit</a> |
-<a href="{% url 'finances:goal_delete' object.pk %}">Delete</a> |
-<a href="{% url 'finances:goal_list' %}">Back</a>
+<div class="mt-5">
+  <a class="wc-btn" href="{% url 'finances:goal_list' %}">Back</a>
+</div>
 
 {% endblock %}
