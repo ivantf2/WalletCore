@@ -130,7 +130,7 @@ http://127.0.0.1:8000/
 
 ---
 
-## Screenshots
+## Screenshotovi
 
 Screenshots aplikacije dostupni su u folderu:
 
